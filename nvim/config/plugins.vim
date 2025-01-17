@@ -1,11 +1,11 @@
 call plug#begin()
     " Aesthetics
     Plug 'tpope/vim-commentary'
-	Plug 'morhetz/gruvbox'
-	Plug 'itchyny/lightline.vim'
 	Plug 'yggdroot/indentline'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-     
+    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }    
+    Plug 'feline-nvim/feline.nvim'
+
     " Ease Plugins
   	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

@@ -15,7 +15,16 @@ source ~/.config/nvim/config/plugins.vim
 source ~/.config/nvim/config/keymaps.vim
 source ~/.config/nvim/config/settings.vim
 
-lua require('coc')
-lua require('treesitter-configs')
-lua require('live-server').setup(opts)
+lua << EOF
+    require('coc')
+    require('treesitter-configs')
+    require('live-server').setup(opts)
+    
+    local ctp_feline = require('catppuccin.groups.integrations.feline')
+    ctp_feline.setup()
+
+    require("feline").setup({
+        components = ctp_feline.get(),
+    })
+EOF
 

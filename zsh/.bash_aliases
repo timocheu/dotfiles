@@ -1,5 +1,5 @@
 # General
-alias ls="eza --icons=auto"
+alias ls="eza --icons=always --color=always"
 alias l="eza -lha --icons=auto"
 
 # Configs
