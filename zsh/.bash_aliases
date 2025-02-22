@@ -16,3 +16,4 @@ alias zen-browser="io.github.zen_browser.zen"
 
 # Keyboard set caps to esc
 alias sk='setxkbmap -option "caps:escape_shifted_capslock"'
+

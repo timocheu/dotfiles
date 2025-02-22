@@ -27,3 +27,4 @@ nnoremap <silent> <Leader>h/ :History/<CR>
 
 " Keymap Config shortcut
 map <Leader>km :edit ~/.config/nvim/config/keymaps.vim<CR>
+map <Leader>;; :source ~/.config/nvim/init.vim<CR>

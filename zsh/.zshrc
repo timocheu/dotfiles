@@ -22,7 +22,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin/
 export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
 
 

@@ -4,7 +4,6 @@ set nocompatible
 set hidden
 set guicursor=n-v-c-i:block
 
-
 " <Tab> distance
 set tabstop=4
 set shiftwidth=4
@@ -25,6 +24,18 @@ lua << EOF
 
     require("feline").setup({
         components = ctp_feline.get(),
+    })
+
+    vim.diagnostic.config({
+      virtual_text = true,  -- Always show diagnostics as virtual text
+      signs = true,         -- Show signs in the gutter
+      underline = true,     -- Underline problematic text
+      update_in_insert = false, -- Do not update diagnostics while in insert mode
+      float = {
+        show_header = true,
+        source = "always",
+        border = "rounded",
+      },
     })
 EOF
 
