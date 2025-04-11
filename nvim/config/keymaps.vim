@@ -1,3 +1,6 @@
+" Basic config
+" imap kj <Esc>
+
 " Tab navigation Mapping
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-k> :tabnext<CR>

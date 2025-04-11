@@ -10,7 +10,22 @@ fi
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # Aliases
 source $HOME/.bash_aliases
+# building c++
+function buildcpp {
+    if [[ -z "$1" ]]; then
+        echo "Usage: buildcpp <file.cpp>"
+        return 1
+    fi
 
+    local src="$1"
+    if [[ ! -f "$src" ]]; then
+        echo "File '$src' not found."
+        return 1
+    fi
+
+    local base="${src%.cpp}"
+    g++ -std=c++17 -O2 -Wall "$src" -o "$base"
+}
 
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then

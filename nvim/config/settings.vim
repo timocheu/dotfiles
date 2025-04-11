@@ -6,7 +6,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 " filetype plugin on
 
 " THEME
-colorscheme carbonfox
+colorscheme catppuccin-mocha
 
 " For prettier.coc 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
