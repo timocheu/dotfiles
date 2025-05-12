@@ -55,10 +55,10 @@ new_window pixel 1
 
 # Set inner/outer gaps
 gaps inner 6
-gaps outer 3
+gaps outer 0
 
 # show window title bars (not officially supported with i3gaps)
-default_border none
+default_border pixel 2
 
 # window title alignment
 #title_align center
@@ -497,13 +497,16 @@ set $darkgrey		#383c4a
 set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
+set $orange		#db6225
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
+client.focused		    	$yellow		$darkblue	$white		$mediumgrey	$mediumgrey
 client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
 client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+
+client.background		$orange
 
 ############################################
 # bar settings (input comes from i3blocks) #

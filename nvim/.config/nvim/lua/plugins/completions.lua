@@ -1,5 +1,11 @@
 return {
   {
+    'L3MON4D3/LuaSnip',
+    dependencies = {
+      'rafamadriz/friendly-snippets'
+    }
+  },
+  {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
     dependencies = {},
@@ -47,6 +53,8 @@ return {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
 
+      snippets = { preset = 'luasnip' },
+
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
       -- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
       -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
@@ -56,10 +64,4 @@ return {
     },
     opts_extend = { "sources.default" }
   },
-  {
-    'L3MON4D3/LuaSnip',
-    dependencies = {
-      'rafamadriz/friendly-snippets'
-    }
-  }
 }
