@@ -1,6 +1,5 @@
 # General
-alias ls="eza --icons=auto --color=auto"
-alias l="eza -lha --icons=auto"
+alias eza="eza --icons=auto --color=auto"
 
 # Configs
 alias nvimconfig="nvim ~/.config/nvim/init.vim"

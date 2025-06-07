@@ -1,6 +1,6 @@
 theme = Adventure
 font-family = "Iosevka Nerd Font"
-font-size=22
+font-size = 22
 
 # Fonts = { "BigBlueTerm437 Nerd Font" }
 cursor-style = block
@@ -13,5 +13,6 @@ window-padding-balance = true
 window-padding-x = 0
 window-padding-y = 0
 window-padding-color = extend
+window-decoration = none
 
-
+# Font autoset with specific value

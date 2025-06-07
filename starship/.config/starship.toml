@@ -6,16 +6,6 @@ $username\
 $directory\
 $git_branch\
 $git_status\
-$c\
-$cpp\
-$rust\
-$golang\
-$nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
-$python\
 $character"""
 
 palette = 'gruvbox_dark'
@@ -69,8 +59,8 @@ format = '[ $user ]($style)'
 [directory]
 style = "fg:bright-blue"
 format = "[$path ]($style)"
-truncation_length = 3
-truncation_symbol = "… /"
+truncation_length = 2
+truncation_symbol = "../"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -162,9 +152,9 @@ disabled = true
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:bright-green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:bright-green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+success_symbol = '[ ](bold fg:bright-green)'
+error_symbol = '[ ](bold fg:color_red)'
+vimcmd_symbol = '[ ](bold fg:bright-green)'
+vimcmd_replace_one_symbol = '[ ](bold fg:color_purple)'
+vimcmd_replace_symbol = '[ ](bold fg:color_purple)'
+vimcmd_visual_symbol = '[ ](bold fg:color_yellow)'
