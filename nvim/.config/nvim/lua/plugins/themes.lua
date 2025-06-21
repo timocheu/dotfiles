@@ -18,6 +18,7 @@ return {
 
       vim.cmd.colorscheme('gruvbox-material')
       vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = 'orange', bold = true })
+      vim.cmd("hi ColorColumn ctermbg=darkred guibg=darkred")
     end
   },
 }
