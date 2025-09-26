@@ -22,10 +22,28 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require("lspconfig")
+      -- local lspconfig = require("lspconfig")
 
-      lspconfig['lua_ls'].setup({ capabilities = capabilities })
-      lspconfig['gopls'].setup({ capabilities = capabilities })
+      vim.lsp.config('gopls', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('intelephense', {
+        cmd = { "/home/timocheu/.local/share/intelephense/intelephense.sh" },
+        capabilities = capabilities,
+        filetypes = { "php" },
+        -- root_dir = vim.lsp.util.root_pattern("composer.json", ".git"),
+      })
+
+      -- lspconfig['gopls'].setup({ capabilities = capabilities })
+
+      -- Intelephense setup
+      -- lspconfig['intelephense'].setup ({
+      --   cmd = { "/home/timocheu/.local/share/intelephense/intelephense.sh"},
+      --   capabilities = capabilities,
+      --   filetypes = { "php" },
+      --   root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+      -- })
 
       -- LSP functions keymap
       local opts = { noremap = true, silent = true }
@@ -52,7 +70,7 @@ return {
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
       -- Diagnostic navigation
-      vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+      vim.keymap.set("n", "<leader>es", vim.diagnostic.open_float, opts)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     end

@@ -34,7 +34,7 @@ return {
       -- See :h blink-cmp-config-keymap for defining your own keymap
       keymap = { 
         preset = 'super-tab',
-        ['<S-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+        ['<leader>c'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
       },
 
       appearance = {

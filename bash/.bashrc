@@ -20,6 +20,9 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 
+# NodeJS
+export PATH="$HOME/nodejs/bin:$PATH"
+
 # NVIM
 export EDITOR=nvim
 
