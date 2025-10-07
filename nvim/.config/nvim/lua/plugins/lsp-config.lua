@@ -22,7 +22,22 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- local lspconfig = require("lspconfig")
+
+      vim.lsp.config('markdown_oxide', {
+        -- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
+        -- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
+        capabilities = vim.tbl_deep_extend(
+          'force',
+          capabilities,
+          {
+            workspace = {
+              didChangeWatchedFiles = {
+                dynamicRegistration = true,
+              },
+            },
+          }
+        ),
+      })
 
       vim.lsp.config('gopls', {
         capabilities = capabilities,
@@ -35,15 +50,54 @@ return {
         -- root_dir = vim.lsp.util.root_pattern("composer.json", ".git"),
       })
 
-      -- lspconfig['gopls'].setup({ capabilities = capabilities })
+      vim.lsp.config('lua_ls', {
+        on_init = function(client)
+          if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if
+                path ~= vim.fn.stdpath('config')
+                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+            then
+              return
+            end
+          end
 
-      -- Intelephense setup
-      -- lspconfig['intelephense'].setup ({
-      --   cmd = { "/home/timocheu/.local/share/intelephense/intelephense.sh"},
-      --   capabilities = capabilities,
-      --   filetypes = { "php" },
-      --   root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
-      -- })
+          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most
+              -- likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+              -- Tell the language server how to find Lua modules same way as Neovim
+              -- (see `:h lua-module-load`)
+              path = {
+                'lua/?.lua',
+                'lua/?/init.lua',
+              },
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME
+                -- Depending on the usage, you might want to add additional paths
+                -- here.
+                -- '${3rd}/luv/library'
+                -- '${3rd}/busted/library'
+              }
+              -- Or pull in all of 'runtimepath'.
+              -- NOTE: this is a lot slower and will cause issues when working on
+              -- your own configuration.
+              -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+              -- library = {
+              --   vim.api.nvim_get_runtime_file('', true),
+              -- }
+            }
+          })
+        end,
+        settings = {
+          Lua = {}
+        }
+      })
 
       -- LSP functions keymap
       local opts = { noremap = true, silent = true }

@@ -32,9 +32,8 @@ return {
       -- C-k: Toggle signature help (if signature.enabled = true)
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { 
+      keymap = {
         preset = 'super-tab',
-        ['<leader>c'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
       },
 
       appearance = {
