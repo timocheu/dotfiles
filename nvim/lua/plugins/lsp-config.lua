@@ -23,34 +23,8 @@ return {
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      vim.lsp.config('markdown_oxide', {
-        -- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
-        -- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
-        capabilities = vim.tbl_deep_extend(
-          'force',
-          capabilities,
-          {
-            workspace = {
-              didChangeWatchedFiles = {
-                dynamicRegistration = true,
-              },
-            },
-          }
-        ),
-      })
-
-      vim.lsp.config('gopls', {
-        capabilities = capabilities,
-      })
-
-      vim.lsp.config('intelephense', {
-        cmd = { "/home/timocheu/.local/share/intelephense/intelephense.sh" },
-        capabilities = capabilities,
-        filetypes = { "php" },
-        -- root_dir = vim.lsp.util.root_pattern("composer.json", ".git"),
-      })
-
       vim.lsp.config('lua_ls', {
+        capabilities = capabilities,
         on_init = function(client)
           if client.workspace_folders then
             local path = client.workspace_folders[1].name
@@ -127,6 +101,9 @@ return {
       vim.keymap.set("n", "<leader>es", vim.diagnostic.open_float, opts)
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
+      -- Format
+      -- vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, opts)
     end
   },
   {

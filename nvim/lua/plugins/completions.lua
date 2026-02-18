@@ -1,11 +1,5 @@
 return {
   {
-    'L3MON4D3/LuaSnip',
-    dependencies = {
-      'rafamadriz/friendly-snippets'
-    }
-  },
-  {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
     dependencies = {},
