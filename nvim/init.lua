@@ -1,11 +1,22 @@
 require("config.lazy")
 
+-- Visuals & Colors
 vim.opt.termguicolors = true
-vim.cmd("set guicursor=i:block")
-vim.cmd("set colorcolumn=81")
-vim.cmd("set rnu")
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
 vim.opt.cursorline = true
+vim.opt.colorcolumn = "81"
+vim.opt.guicursor = "i:block" -- Keeps block cursor in Insert mode
+
+-- Line Numbers (Hybrid mode: current line is absolute, others are relative)
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Tab / Indentation
+vim.opt.expandtab = true   -- Use spaces instead of tabs
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+
+vim.opt.listchars = {
+    trail = '·'
+}
+
