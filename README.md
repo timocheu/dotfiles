@@ -1,4 +1,6 @@
 # Requirements
+
+
 ## Apps
 - fzf
 - ranger
@@ -12,3 +14,9 @@
 
 ### Fzf
 - fd-find
+
+# Setup (LINUX) ⚡
+### Stowing Instruction
+1. Install a stower, ex. 'stow', 'xstow' or 'rstow'
+2. Setup Ex. `stow ~/.config/nvim dotfiles/nvim`
+3. If added new file do a restow
