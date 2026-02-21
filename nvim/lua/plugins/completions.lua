@@ -51,6 +51,9 @@ return {
             sources = {
                 default = { 'lsp', 'path', 'buffer', 'snippets' },
                 providers = {
+                    snippets = {
+                        should_show_items = function() return false end,
+                    },
                     buffer = {
                         opts = {
                             get_bufnrs = function()
@@ -70,7 +73,28 @@ return {
             -- See the fuzzy documentation for more information
             fuzzy = { implementation = "prefer_rust_with_warning" }
         },
-        opts_extend = { "sources.default" }
-    },
+        opts_extend = { "sources.default" },
+        config = function(_, opts)
+            local show_snippets = false
 
+            opts.sources.providers.snippets.should_show_items = function()
+                return show_snippets
+            end
+
+            require('blink.cmp').setup(opts)
+
+            vim.keymap.set('i', '<C-q>', function()
+                show_snippets = true
+
+                -- Force blink to show only the snippets source
+                require('blink.cmp').show({ sources = { 'snippets' } })
+
+                -- We use a timer to flip the switch back to false.
+                -- This ensures that next time you type normally, snippets are hidden again.
+                vim.defer_fn(function()
+                    show_snippets = false
+                end, 1000)
+            end, { desc = "blink: manual snippet trigger" })
+        end,
+    },
 }

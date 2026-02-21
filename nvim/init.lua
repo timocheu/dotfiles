@@ -19,4 +19,3 @@ vim.opt.softtabstop = 4
 vim.opt.listchars = {
     trail = '·'
 }
-
