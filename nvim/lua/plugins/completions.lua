@@ -49,8 +49,15 @@ return {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { 'lsp', 'path', 'buffer', 'snippets' },
+                default = { 'lsp', 'path', 'buffer', 'snippets', "easy-dotnet" },
                 providers = {
+                    ["easy-dotnet"] = {
+                        name = "easy-dotnet",
+                        enabled = true,
+                        module = "easy-dotnet.completion.blink",
+                        score_offset = 10000,
+                        async = true,
+                    },
                     snippets = {
                         should_show_items = function() return false end,
                     },
