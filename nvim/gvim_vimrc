@@ -1,0 +1,30 @@
+set rnu
+
+set belloff=all
+
+colorscheme sorbet
+
+" Enable syntax highlighting
+syntax on
+
+" Enable filetype detection and indent rules
+filetype plugin indent on
+
+" Set GUI font to size 14 (example: Consolas)
+set guifont=Consolas:h14
+
+set guioptions-=T
+
+tnoremap <Esc> <C-\><C-n>
+
+" Set term as pwsh
+set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+set shellcmdflag=-NoProfile\ -NoLogo\ -NonInteractive\ -Command
+set shellpipe=|
+set shellredir=>
+
+" remove scroll bar
+set guioptions-=r -R -l -L -b
+
+" Ctrl c, ctrl v
+source $VIMRUNTIME/mswin.vim
