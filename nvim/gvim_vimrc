@@ -24,7 +24,11 @@ set shellpipe=|
 set shellredir=>
 
 " remove scroll bar
-set guioptions-=r -R -l -L -b
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+set guioptions-=b
 
 " Ctrl c, ctrl v
 source $VIMRUNTIME/mswin.vim
