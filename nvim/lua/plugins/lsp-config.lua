@@ -25,8 +25,6 @@ return {
 
             vim.lsp.config('lua_ls', { capabilities = capabilities })
 
-
-
             -- ROSLYN (+razor support)
             -- vim.lsp.config("roslyn", { capabilities = capabilities, })
             vim.filetype.add {
@@ -35,7 +33,6 @@ return {
                     cshtml = "razor",
                 },
             }
-            -- END ROSLYN
 
             -- LSP functions keymap
             local opts = { noremap = true, silent = true }
@@ -65,7 +62,7 @@ return {
     {
         "rachartier/tiny-inline-diagnostic.nvim",
         event = "VeryLazy", -- Or `LspAttach`
-        priority = 1000, -- needs to be loaded in first
+        priority = 1000,    -- needs to be loaded in first
         config = function()
             require('tiny-inline-diagnostic').setup({
                 preset = "minimal",

@@ -9,6 +9,7 @@ return {
       "                                                                     ",
       "                                                                     ",
       "                                                                     ",
+      "                           (Climb higher.)                           ",
       "                 Obsession beats talent every time.                  ",
       "                                                                     ",
       "                                                                     ",

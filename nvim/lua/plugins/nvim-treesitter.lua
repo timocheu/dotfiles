@@ -1,28 +1,13 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    build = ':TSUpdate',
-    config = function()
-        require('nvim-treesitter').setup({
-            auto_install = true,
-            sync_install = false,
-            highlight = { enable = true },
-            indent = { enable = true },
-        })
-    end
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- Map .blade.php files to the blade filetype
+      vim.filetype.add({
+        pattern = {
+          [".*%.blade%.php"] = "blade",
+        },
+      })
+    end,
+  },
 }
--- return {
---
---   "nvim-treesitter/nvim-treesitter",
---   build = ":TSUpdate",
---   config = function ()
---     local configs = require("nvim-treesitter.configs")
---
---     configs.setup({
---         auto_install = true,
---         sync_install = false,
---         highlight = { enable = true },
---         indent = { enable = true },
---       })
---   end
--- }

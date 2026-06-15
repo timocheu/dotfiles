@@ -42,24 +42,28 @@ return {
                     auto_show = false,
                 },
                 menu = {
-                    auto_show = true,
+                    auto_show = false,
                 }
             },
 
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { 'lsp', 'path', 'buffer', 'snippets', "easy-dotnet" },
+                default = { 'laravel', 'lsp', 'path', 'buffer', 'snippets' },
                 providers = {
-                    ["easy-dotnet"] = {
-                        name = "easy-dotnet",
-                        enabled = true,
-                        module = "easy-dotnet.completion.blink",
-                        score_offset = 10000,
-                        async = true,
-                    },
+                    -- ["easy-dotnet"] = {
+                    --     name = "easy-dotnet",
+                    --     enabled = true,
+                    --     module = "easy-dotnet.completion.blink",
+                    --     score_offset = 10000,
+                    --     async = true,
+                    -- },
                     snippets = {
                         should_show_items = function() return false end,
+                    },
+                    laravel = {
+                        name = "laravel",
+                        module = "laravel.blink_source",
                     },
                     buffer = {
                         opts = {
@@ -82,17 +86,40 @@ return {
         },
         opts_extend = { "sources.default" },
         config = function(_, opts)
+            local blink = require('blink.cmp')
+
             local show_snippets = false
+            local menu_auto = false
 
             opts.sources.providers.snippets.should_show_items = function()
                 return show_snippets
             end
 
-            require('blink.cmp').setup(opts)
+            opts.completion = {
+                documentation = { auto_show = false },
+                menu = {
+                    auto_show = function()
+                        return menu_auto
+                    end
+                }
+            }
 
+            blink.setup(opts)
+
+            vim.keymap.set({ 'i', 'n' }, '<A-c>', function()
+                menu_auto = not menu_auto
+
+                if menu_auto then
+                    vim.notify("Autocomplete: Auto-Show ON", vim.log.levels.INFO)
+                else
+                    vim.notify("Autocomplete: Manual-Trigger Only", vim.log.levels.WARN)
+                    blink.hide() -- Immediately close the menu if it was open
+                end
+            end, { desc = "blink: toggle auto menu popup" })
+
+            -- Snippet
             vim.keymap.set('i', '<C-q>', function()
                 show_snippets = true
-
                 -- Force blink to show only the snippets source
                 require('blink.cmp').show({ sources = { 'snippets' } })
 
